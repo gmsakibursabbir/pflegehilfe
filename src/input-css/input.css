@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-TimesNewRoman: 'Times New Roman', sans-serif;
+  --font-CalendasPlus: 'Calendas Plus', sans-serif;
+  --font-SourceSans: 'Source Sans 3', sans-serif;
+
+  --screen-xsm: 370px;
+  --screen-sm: 480px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1320px;
+
+  --container-xsm: 100%;
+  --container-sm: 100%;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1342px;
+  --container-padding: 1rem;
+
+  --color-red: #b9142f;
+  --color-text: #4e4e4d;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+@media (min-width: var(--screen-xsm)) {
+  .container {
+    max-width: var(--container-sm);
+  }
+}
+
+@media (min-width: var(--screen-sm)) {
+  .container {
+    max-width: var(--container-md);
+  }
+}
+
+@media (min-width: var(--screen-md)) {
+  .container {
+    max-width: var(--container-lg);
+  }
+}
+
+@media (min-width: var(--screen-lg)) {
+  .container {
+    max-width: var(--container-xl);
+  }
+}
+body {
+  font-family: 'Calendas Plus', 'Times New Roman', sans-serif;
+  background-color: #f5f0eb;
+}
+button {
+  cursor: pointer;
+}
+.dropdown-enter {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Mega Menu */
+.mobile-menu-item {
+  display: none;
+}
+#mobileMenuButton.active svg.hidden {
+  display: block;
+}
+#mobileMenuButton.active svg {
+  display: none;
+}
+.mobile-menu-item.active {
+  display: block;
+}
+header .group button.active {
+  color: #b9142f;
+}
+header .group button.active svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.cardItem img {
+  transition: transform 0.3s ease;
+}
+.cardItem:hover img {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+.cardItem .cardText {
+  transition: transform 0.3s ease;
+}
+.cardItem:hover .cardText {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
+}
+.cardItem:hover .cardButton {
+  opacity: 1;
+  color: #fff;
+  transition: all 0.6s ease-in-out;
+}
+
+
+#banner {
+  background-image: url("../images/banner.webp");
+  background-size: cover;
+  background-position: center;
+}
