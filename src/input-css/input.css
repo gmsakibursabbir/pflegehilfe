@@ -1,9 +1,9 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --font-TimesNewRoman: 'Times New Roman', sans-serif;
-  --font-CalendasPlus: 'Calendas Plus', sans-serif;
-  --font-SourceSans: 'Source Sans 3', sans-serif;
+  --font-TimesNewRoman: "Times New Roman", sans-serif;
+  --font-CalendasPlus: "Calendas Plus", sans-serif;
+  --font-SourceSans: "Source Sans 3", sans-serif;
 
   --screen-xsm: 370px;
   --screen-sm: 480px;
@@ -18,8 +18,8 @@
   --container-xl: 1342px;
   --container-padding: 1rem;
 
-  --color-red: #b9142f;
-  --color-text: #4e4e4d;
+  --color-red-zero: #b9142f;
+  --color-gray-zero: #4e4e4d;
 }
 
 .container {
@@ -55,7 +55,7 @@
   }
 }
 body {
-  font-family: 'Calendas Plus', 'Times New Roman', sans-serif;
+  font-family: "Calendas Plus", "Times New Roman", sans-serif;
   background-color: #f5f0eb;
 }
 button {
@@ -112,7 +112,6 @@ header .group button.active svg {
   color: #fff;
   transition: all 0.6s ease-in-out;
 }
-
 
 #banner {
   background-image: url("../images/banner.webp");
