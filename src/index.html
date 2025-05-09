@@ -2618,52 +2618,85 @@
     <!-- footer end -->
     <!-- javascript -->
 
+
     <script>
       // Desktop Menu Toggle
-      function toggleMenu(id) {
-        document.querySelectorAll('[id^="menu"]').forEach((menu) => {
-          if (menu.id !== id) menu.classList.add("hidden");
+      function toggleMenu(id, buttonElement) {
+        // Hide all menus except the current one
+        document.querySelectorAll('[id^="menu"]').forEach(menu => {
+          if (menu.id !== id) menu.classList.add('hidden');
         });
+  
+        // Remove 'active' class from all desktop menu buttons
+        document.querySelectorAll('.menu-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+  
+        // Add 'active' to clicked desktop button
+        if (buttonElement) {
+          buttonElement.classList.toggle('active');
+        }
+  
         const menu = document.getElementById(id);
-        menu.classList.toggle("active");
-        if (menu.classList.contains("hidden")) {
-          menu.classList.remove("hidden", "dropdown-enter");
-          setTimeout(() => menu.classList.add("dropdown-enter-active"), 10);
+        menu.classList.toggle('active');
+  
+        if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden', 'dropdown-enter');
+          setTimeout(() => menu.classList.add('dropdown-enter-active'), 10);
         } else {
-          menu.classList.add("hidden");
-          menu.classList.remove("dropdown-enter-active");
+          menu.classList.add('hidden');
+          menu.classList.remove('dropdown-enter-active');
         }
       }
-
+  
       // Mobile Menu Toggle
-      function toggleMobileMenu(id) {
-        const menuItem = document.getElementById(id);
-        menuItem.classList.toggle("active");
-      }
-
-      // Mobile menu toggle
-      document
-        .getElementById("mobileMenuButton")
-        .addEventListener("click", () => {
-          const menu = document.getElementById("mobileMenu");
-          const humbergarMenu = document.getElementById("mobileMenuButton");
-          humbergarMenu.classList.toggle("active");
-          menu.classList.toggle("hidden");
+      function toggleMobileMenu(id, buttonElement) {
+        // Close other mobile menu items
+        document.querySelectorAll('.mobile-menu-item').forEach(item => {
+          if (item.id !== id) item.classList.add('hidden');
         });
-
-      // Hide menus when clicking outside
-      document.addEventListener("click", function (e) {
-        if (
-          !e.target.closest("nav") &&
-          !e.target.closest("#mobileMenuButton")
-        ) {
-          document
-            .querySelectorAll('[id^="menu"], .mobile-menu-item')
-            .forEach((menu) => {
-              menu.classList.add("hidden");
-            });
+  
+        // Remove 'active' class from all mobile menu buttons
+        document.querySelectorAll('.mobile-menu-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+  
+        // Add 'active' to clicked mobile menu button
+        if (buttonElement) {
+          buttonElement.classList.toggle('active');
+        }
+  
+        const menuItem = document.getElementById(id);
+        menuItem.classList.toggle('hidden');
+      }
+  
+      // Mobile menu hamburger toggle
+      document.getElementById('mobileMenuButton').addEventListener('click', () => {
+        const menu = document.getElementById('mobileMenu');
+        const hamburgerMenu = document.getElementById('mobileMenuButton');
+        hamburgerMenu.classList.toggle('active');
+        menu.classList.toggle('hidden');
+      });
+  
+      // Hide all menus when clicking outside
+      document.addEventListener('click', function (e) {
+        const isInsideNav = e.target.closest('nav');
+        const isMobileButton = e.target.closest('#mobileMenuButton');
+  
+        if (!isInsideNav && !isMobileButton) {
+          // Hide all menus
+          document.querySelectorAll('[id^="menu"], .mobile-menu-item').forEach(menu => {
+            menu.classList.add('hidden');
+            menu.classList.remove('dropdown-enter-active', 'active');
+          });
+  
+          // Remove 'active' from all menu buttons
+          document.querySelectorAll('.menu-button, .mobile-menu-button, #mobileMenuButton').forEach(btn => {
+            btn.classList.remove('active');
+          });
         }
       });
+  
     </script>
     <script src="./js/index.js"></script>
   </body>
